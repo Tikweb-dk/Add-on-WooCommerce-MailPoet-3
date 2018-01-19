@@ -106,6 +106,7 @@ if(!class_exists('MPWA_Admin_Settings')){
 						'id'       => 'wc_'.$this->id.'_multi_subscription',
 						'default'  => 'no',
 						'type'     => 'select',
+						'class'	   => 'wc-enhanced-select',
 						'options'  => array(
 							'no'  => $this->__('No'),
 							'yes' => $this->__('Yes')
@@ -123,7 +124,7 @@ if(!class_exists('MPWA_Admin_Settings')){
 						'desc'     => $this->__('The default state of the subscribe checkbox. Be aware some countries have laws against using opt-out checkboxes.'),
 						'desc_tip' => true,
 						'id'       => 'wc_'.$this->id.'_checkbox_status',
-						'class'    => 'single_list_only',
+						'class'    => 'single_list_only wc-enhanced-select',
 						'default'  => 'unchecked',
 						'type'     => 'select',
 						'options'  => array(
@@ -133,11 +134,11 @@ if(!class_exists('MPWA_Admin_Settings')){
 					),
 					array(
 						'name'        => $this->__('Subscribe checkbox label'),
-						'desc'        => $this->__('The text you want to display next to the "Subscribe to Newsletter/s" checkbox.'),
+						'desc'        => $this->__('The text you want to display next to the "Subscribe to Newsletter" checkbox.'),
 						'id'          => 'wc_'.$this->id.'_checkout_label',
 						'css'         => 'min-width:350px;',
 						'type'        => 'text',
-						'placeholder' => $this->__('Yes, please subscribe me to the newsletter/s.'),
+						'placeholder' => $this->__('Yes, please subscribe me to the newsletter.'),
 						'class'       => 'single_list_only'
 					),
 					array(
@@ -147,6 +148,7 @@ if(!class_exists('MPWA_Admin_Settings')){
 						'id'       => 'wc_'.$this->id.'_subscription_position',
 						'default'  => 'after_order_notes',
 						'type'     => 'select',
+						'class'	   => 'wc-enhanced-select',
 						'options'  => apply_filters('mailpoet_woocommerce_subscription_position', array(
 							'before_checkout_billing_form'  => $this->__('Before Billing Form'),
 							'after_checkout_billing_form'   => $this->__('After Billing Form'),

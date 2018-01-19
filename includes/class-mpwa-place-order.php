@@ -97,7 +97,7 @@ if(!class_exists('MPWA_Place_Order')){
 						wc_add_notice( 
 							apply_filters(
 								'mailpoet_woocommerce_subscribe_thank_you', 
-								self::__('Thank you for subscribing to our newsletter/s.') 
+								self::__('Thank you for subscribing to our newsletters.') 
 							) 
 						);
 
@@ -121,7 +121,7 @@ if(!class_exists('MPWA_Place_Order')){
 			wc_add_notice( 
 				apply_filters( 
 					'mailpoet_woocommerce_subscribe_error', 
-					self::__('There appears to be a problem subscribing you to our newsletter/s. Please let us know so we can manually add you ourselves. Thank you.') 
+					self::__('There appears to be a problem subscribing you to our newsletters. Please let us know so we can manually add you ourselves. Thank you.') 
 				), 
 				'error' 
 			);
