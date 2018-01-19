@@ -21,20 +21,23 @@ if(!class_exists('MPWA_Frontend_Fields')){
 		public $show_form;
 		public $default_status;
 		public $list_ids;
+		private static $_this_class = NULL;
 
 		/**
 		 * Initialize the class
 		 */
 		public static function init()
 		{
-			$_this_class = new self;
-			return $_this_class;
+			if(empty(self::$_this_class)){
+				self::$_this_class = new self;
+			}
+			return self::$_this_class;
 		}//Edn of init
 
 		/**
 		 * Constructor
 		 */
-		public function __construct()
+		private function __construct()
 		{
 			//Check for if user logged in and already subscribed
 			if(is_user_logged_in()){
@@ -70,7 +73,7 @@ if(!class_exists('MPWA_Frontend_Fields')){
 			$this->multi_subscription = get_option('wc_'.$this->tab_slug.'_multi_subscription');
 
 			//Subscription Lists selected
-			$this->list_ids = get_option('wc_mailpoet_segment_list'); 
+			$this->list_ids = get_option('wc_mailpoet_segment_list', []); 
 
 			//If tick the `Enable subscription` checkbox
 			if('yes' == $this->show_form){
@@ -85,9 +88,10 @@ if(!class_exists('MPWA_Frontend_Fields')){
 		public function checkout_page_form()
 		{
 			?>
-			<div class="mailpoet-subscription-section">
-				<h3><?php $this->_e('Subscribe to Newsletter/s'); ?></h3>
-				<?php if('yes' == $this->multi_subscription): ?>
+			<div class="mailpoet-subscription-section" style="clear:both;">
+				
+				<?php if(('yes' == $this->multi_subscription) && !empty($this->list_ids)): ?>
+					<h3><?php $this->_e('Subscribe to Newsletters'); ?></h3>
 					<?php
 						$sagments = Segment::whereIdIn($this->list_ids)->findArray();
 						if(is_array($sagments)): foreach($sagments as $sagment):
@@ -98,13 +102,14 @@ if(!class_exists('MPWA_Frontend_Fields')){
 							<?php echo $sagment['name']; ?>
 						</label>
 					</p>
-					<?php endforeach; endif; ?>
+				<?php endforeach; endif; ?>
 				<?php else: ?>
+					<h3><?php $this->_e('Subscribe to Newsletter'); ?></h3>
 					<?php
 						// Subscribe Checkbox Label
 						$checkout_label = get_option('wc_'.$this->tab_slug.'_checkout_label'); 
 						// Puts default label if not set in the settings.
-						$subscribe_label = !empty($checkout_label) ? $checkout_label : $this->__('Yes, please subscribe me to the newsletter/s.');
+						$subscribe_label = !empty($checkout_label) ? $checkout_label : $this->__('Yes, please subscribe me to the newsletter.');
 					?>
 					<p class="form-row form-row-wide mailpoet-subscription-field">
 						<label>
@@ -122,9 +127,11 @@ if(!class_exists('MPWA_Frontend_Fields')){
 	/**
 	 * Instentiate class after posts selection
 	 */
+	$MPWA_Frontend_Fields = '';
 	function mpwa_frontend_fields_init_posts_selection(){
-		if(is_checkout()){
-			MPWA_Frontend_Fields::init();
+		global $MPWA_Frontend_Fields;
+		if(is_checkout() && empty($MPWA_Frontend_Fields)){
+			$MPWA_Frontend_Fields = MPWA_Frontend_Fields::init();
 		}
 	}
 	add_action('posts_selection', 'mpwa_frontend_fields_init_posts_selection');

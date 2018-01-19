@@ -3,9 +3,9 @@ Contributors: kasperta, sebd86
 Tags: mailpoet, wysija, woocommerce, e-commerce, mail, email, e-mail, extension, add-on, newsletter, newsletters, subscription, checkout, list, lists, double opt-in, form
 Donate link: http://www.tikweb.dk/donate/
 Requires at least: 4.6
-Tested up to: 4.8
-Requires PHP: 5.2
-Stable tag: 1.0.1
+Tested up to: 4.9
+Requires PHP: 5.3
+Stable tag: 1.0.3
 
 Let your customers subscribe to your MailPoet 3 newsletter as they checkout from WooCommerce with their purchase.
 
@@ -79,6 +79,13 @@ That's it, now when your customers tick the subscribe checkbox on the checkout p
 3. General plugin settings.
 
 == Changelog ==
+
+= 1.0.3 - 2017-11-15 =
+* Title fixed, if “Multi-Subscription?” field is set to No, then have it say “Newsletter” and if it’s set to Yes, have it say “Newsletters”.
+* Fixed CSS issue
+
+= 1.0.2 - 2017-10-10 =
+* Subscribe checkbox is displayed many times issue fixed in the version 1.0.2
 
 = 1.0.1 =
 * Fixed all the text domain: mailpoet-woocommerce-add-on to add-on-mailpoet-woocommerce
