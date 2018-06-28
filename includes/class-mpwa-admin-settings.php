@@ -161,6 +161,30 @@ if(!class_exists('MPWA_Admin_Settings')){
 						))
 					),
 					array(
+						'name'		=>	$this->__('Display GDPR Subscription consent Text?'),
+						'desc'		=>	$this->__('Show GDPR Subscription Consent Text'),
+						'id'		=> 'wc_'.$this->id.'_show_gdpr_consent',
+						'default'	=> 'no',
+						'type'		=> 'checkbox'
+					),
+					array(
+						'title'    => $this->__('Privacy page'),
+						'desc'     => $this->__('Choose a page to act as your privacy policy.'),
+						'id'       => 'wp_page_for_privacy_policy',
+						'type'     => 'single_select_page',
+						'default'  => '',
+						'class'    => 'wc-enhanced-select-nostd',
+						'css'      => 'min-width:300px;',
+						'desc_tip' => true,
+					),
+					array(
+						'title'		=> $this->__('GDPR Subscription Consent Text'),
+						'desc'		=> $this->__('<i>Write plain or HTML format and include <strong>[privacy_policy]</strong> shortcode to link privacy page in your text. </i>'),
+						'type'		=> 'textarea',
+						'id'		=> 'wc_'.$this->id.'_gdpr_subscription_consent_text',
+						'default'	=> 'By subscribing you agree to receive our newsletter and agree with our [privacy_policy]. You may unsubscribe at any time.'
+					),
+					array(
 						'title'   => $this->__('Remove all data on uninstall?'),
 						'desc'    => $this->__('If enabled, all settings for this plugin will all be deleted when uninstalling via Plugins > Delete.'),
 						'id'      => 'wc_'.$this->id.'_uninstall_data',

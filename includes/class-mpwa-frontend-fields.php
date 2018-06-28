@@ -72,6 +72,25 @@ if(!class_exists('MPWA_Frontend_Fields')){
 			//Get default checkbox status
 			$this->multi_subscription = get_option('wc_'.$this->tab_slug.'_multi_subscription');
 
+			// Display GDPR consent
+			$this->show_gdpr_consent = get_option('wc_'.$this->tab_slug.'_show_gdpr_consent');
+
+			// Privacy page
+			$this->privacy_page = get_option('wp_page_for_privacy_policy');
+
+			if ( !empty($this->privacy_page) ){
+				$this->privacy_page = get_permalink( $this->privacy_page );
+
+				if ( !empty($this->privacy_page) ){
+					$this->privacy_page = '<a href="'. $this->privacy_page .'" target="_blank">Privacy Policy</a>';
+				} else {
+					$this->privacy_page = '[privacy_policy]';
+				}
+			}
+
+			// GDPR Consent Text
+			$this->gdpr_consent_text = get_option('wc_'.$this->tab_slug.'_gdpr_subscription_consent_text');
+
 			//Subscription Lists selected
 			$this->list_ids = get_option('wc_mailpoet_segment_list', []); 
 
@@ -102,6 +121,13 @@ if(!class_exists('MPWA_Frontend_Fields')){
 							<?php echo $sagment['name']; ?>
 						</label>
 					</p>
+
+					<?php if( $this->show_gdpr_consent == 'yes' ): ?>
+						<p class="form-row form-row-wide mailpoet-subscription-field-gdpr">
+							<?php echo str_replace('[privacy_policy]', $this->privacy_page, $this->gdpr_consent_text); ?>
+						</p>
+					<?php endif; ?>
+
 				<?php endforeach; endif; ?>
 				<?php else: ?>
 					<h3><?php $this->_e('Subscribe to Newsletter'); ?></h3>
@@ -117,6 +143,13 @@ if(!class_exists('MPWA_Frontend_Fields')){
 							<?php echo $subscribe_label; ?>
 						</label>
 					</p>
+
+					<?php if( $this->show_gdpr_consent == 'yes' ): ?>
+						<p class="form-row form-row-wide mailpoet-subscription-field-gdpr">
+							<?php echo str_replace('[privacy_policy]', $this->privacy_page, $this->gdpr_consent_text); ?>
+						</p>
+					<?php endif; ?>
+
 				<?php endif; ?>
 			</div>
 			<?php
