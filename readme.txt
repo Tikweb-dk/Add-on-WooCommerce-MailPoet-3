@@ -5,7 +5,7 @@ Donate link: http://www.tikweb.dk/donate/
 Requires at least: 4.6
 Tested up to: 4.9
 Requires PHP: 5.3
-Stable tag: 1.0.6
+Stable tag: 1.1.0
 
 Let your customers subscribe to your MailPoet 3 newsletter as they checkout from WooCommerce with their purchase.
 
@@ -119,29 +119,20 @@ That's it, now when your customers tick the subscribe checkbox on the checkout p
 
 == Changelog ==
 
-= 1.0.6 - 2018-01-22 =
-* Fixed the add-on-woocommerce-mailpoet.pot file issue under plugin/language/ folder
+= 1.1.0 – 2018-06-28 =
+* Added a new option for ‘Privacy Policy Notice Page’ that is for the GDPR compliance and ask for allow consent in the subscription form.
 
-= 1.0.5 - 2018-01-19 =
-* We have updated the .pot file in the /languages folder
-* Added a new text file under /languages folder that is very thorough description on how to use the online translation system – or use local .po files. The file is named how-to-translate.txt and location is languages/how-to-translate.txt
-* Also added the same text in this file of “How to translate?” section.
+* Added a new settings for the 'GDPR'.
 
-= 1.0.4 - 2018-01-18 =
-* We have fixed the code for pluralization text.
+* Settings for the display GDPR Subscription consent Text.
 
-= 1.0.3 - 2017-11-15 =
-* Title fixed, if “Multi-Subscription?” field is set to No, then have it say “Newsletter” and if it’s set to Yes, have it say “Newsletters”.
-* Fixed CSS issue
+* Set Privacy Page
 
-= 1.0.2 - 2017-10-10 =
-* Subscribe checkbox is displayed many times issue fixed in the version 1.0.2
+* Display Subscribe/Unsubscribe options
 
-= 1.0.1 =
-* Fixed all the text domain: mailpoet-woocommerce-add-on to add-on-mailpoet-woocommerce
+* Added changelog.txt file
 
-= 1.0.0 =
-* Initial release.
+[Changelog](https://plugins.svn.wordpress.org/add-on-woocommerce-mailpoet/trunk/changelog.txt)
 
 == Upgrade Notice ==
 

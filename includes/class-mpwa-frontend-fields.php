@@ -91,6 +91,13 @@ if(!class_exists('MPWA_Frontend_Fields')){
 			// GDPR Consent Text
 			$this->gdpr_consent_text = get_option('wc_'.$this->tab_slug.'_gdpr_subscription_consent_text');
 
+			// Display GDPR unsubscribe option
+			$this->show_gdpr_unsub = get_option('wc_'.$this->tab_slug.'_gdpr_show_unsubscribe');
+
+			// GDPR unsubscribe label text
+			$this->gdpr_unsub_label = get_option('wc_'.$this->tab_slug.'_gdpr_unsubscribe_label');
+
+
 			//Subscription Lists selected
 			$this->list_ids = get_option('wc_mailpoet_segment_list', []); 
 
@@ -122,13 +129,23 @@ if(!class_exists('MPWA_Frontend_Fields')){
 						</label>
 					</p>
 
+				<?php endforeach; ?>
+
 					<?php if( $this->show_gdpr_consent == 'yes' ): ?>
 						<p class="form-row form-row-wide mailpoet-subscription-field-gdpr">
 							<?php echo str_replace('[privacy_policy]', $this->privacy_page, $this->gdpr_consent_text); ?>
 						</p>
 					<?php endif; ?>
 
-				<?php endforeach; endif; ?>
+					<?php if( $this->show_gdpr_unsub == 'yes'): ?>
+						<p class="form-row form-row-wide mailpoet-subscription-field-gdpr">
+							<label>
+								<input type="checkbox" class="input-checkbox" name="gdpr_unsubscribe"> <?php echo $this->gdpr_unsub_label; ?>
+							</label>
+						</p>
+					<?php endif; ?>
+				
+				<?php endif; ?>
 				<?php else: ?>
 					<h3><?php $this->_e('Subscribe to Newsletter'); ?></h3>
 					<?php
@@ -147,6 +164,14 @@ if(!class_exists('MPWA_Frontend_Fields')){
 					<?php if( $this->show_gdpr_consent == 'yes' ): ?>
 						<p class="form-row form-row-wide mailpoet-subscription-field-gdpr">
 							<?php echo str_replace('[privacy_policy]', $this->privacy_page, $this->gdpr_consent_text); ?>
+						</p>
+					<?php endif; ?>
+
+					<?php if( $this->show_gdpr_unsub == 'yes'): ?>
+						<p class="form-row form-row-wide mailpoet-subscription-field-gdpr">
+							<label>
+								<input type="checkbox" class="input-checkbox" name="gdpr_unsubscribe"> <?php echo $this->gdpr_unsub_label; ?>
+							</label>
 						</p>
 					<?php endif; ?>
 
