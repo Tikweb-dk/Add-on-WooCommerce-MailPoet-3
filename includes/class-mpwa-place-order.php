@@ -39,6 +39,13 @@ if(!class_exists('MPWA_Place_Order')){
 
 				}//End if
 
+				// If unsubscribe requested.
+				if ( isset($posted_data['gdpr_unsubscribe']) && $posted_data['gdpr_unsubscribe'] == 'on' ){
+
+					self::unsubscribe_user( $posted_data );
+
+				} //End if
+
 			}//End if
 			
 		}//End of subscribe_user
@@ -112,6 +119,31 @@ if(!class_exists('MPWA_Place_Order')){
 			}//End of if is_array($list_id_array)
 		
 		}//End of save_subscriber_record
+
+		/**
+		 * Unsubscribe User
+		 */
+		public static function unsubscribe_user( $posted_data )
+		{
+
+			$email = isset($posted_data['billing_email']) ? $posted_data['billing_email'] : false;
+			$subscriber = Subscriber::findOne( $email );
+
+			if ( $subscriber !== false ){
+
+				$subscriber->status = 'unsubscribed';
+				$subscriber->save();
+
+				wc_add_notice( 
+					apply_filters(
+						'mailpoet_woocommerce_unsubscribe_confirm', 
+						self::__('You will no longer receive our newletter! Feel free to subscribe our newsletter anytime you want.') 
+					)
+				);
+
+			}
+
+		} // End of unsubscribe_user
 
 		/**
 		 * Save data Error notice

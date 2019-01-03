@@ -161,7 +161,21 @@ if(!class_exists('MPWA_Admin_Settings')){
 						))
 					),
 					array(
-						'name'		=>	$this->__('Display GDPR Subscription consent Text?'),
+						'title'   => $this->__('Remove all data on uninstall?'),
+						'desc'    => $this->__('If enabled, all settings for this plugin will all be deleted when uninstalling via Plugins > Delete.'),
+						'id'      => 'wc_'.$this->id.'_uninstall_data',
+						'default' => 'no',
+						'type'    => 'checkbox'
+					),
+					array(
+						'type'		=> 'sectionend'
+					),
+					array(
+						'title'		=> $this->__('GDPR'),
+						'type'		=> 'title',
+					),
+					array(
+						'title'		=>	$this->__('Display GDPR Subscription consent Text?'),
 						'desc'		=>	$this->__('Show GDPR Subscription Consent Text'),
 						'id'		=> 'wc_'.$this->id.'_show_gdpr_consent',
 						'default'	=> 'no',
@@ -185,11 +199,19 @@ if(!class_exists('MPWA_Admin_Settings')){
 						'default'	=> 'By subscribing you agree to receive our newsletter and agree with our [privacy_policy]. You may unsubscribe at any time.'
 					),
 					array(
-						'title'   => $this->__('Remove all data on uninstall?'),
-						'desc'    => $this->__('If enabled, all settings for this plugin will all be deleted when uninstalling via Plugins > Delete.'),
-						'id'      => 'wc_'.$this->id.'_uninstall_data',
-						'default' => 'no',
-						'type'    => 'checkbox'
+						'title'		=> $this->__('Display Unsubscribe option'),
+						'desc'		=>	$this->__('Let customer unsubscribe through checkbout page'),
+						'type'		=> 'checkbox',
+						'id'		=> 'wc_'.$this->id.'_gdpr_show_unsubscribe',
+						'default'	=> 'no'
+					),
+					array(
+						'title'		=> $this->__('Unsubscribe checkbox label'),
+						'desc'		=> $this->__('If this feature is enabled, a checkbox will be display in checkout page after subscription section which will let your customer to unsubscribe from mailpoet.'),
+						'desc_tip'	=> true,
+						'type'		=> 'text',
+						'id'		=> 'wc_'.$this->id.'_gdpr_unsubscribe_label',
+						'default'	=> $this->__('Unsubscribe from our newsletter')
 					),
 		            array(
 		                'type' => 'sectionend',
