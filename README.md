@@ -7,4 +7,4 @@ This repo is a clone of our original subversion repo on WordPress. We try to kee
 ## Support
 Please don't post any support request here. For support, please post it on our dedicated WordPress.org plugin support forum. 
 
-[Add-on-WooCommerce-MailPoet-3 support forum](https://wordpress.org/support/plugin/add-on-gravity-forms-mailpoet/)
+[Add-on-WooCommerce-MailPoet-3 support forum](https://wordpress.org/plugins/add-on-woocommerce-mailpoet/)
