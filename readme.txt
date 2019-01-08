@@ -119,6 +119,9 @@ That's it, now when your customers tick the subscribe checkbox on the checkout p
 
 == Changelog ==
 
+= 1.1.1 - 2018-01-08 =
+* Bugfix - Fixed 'confirmation email not sent and order not posted' issue with latest Mailpoet v3.17.1
+
 = 1.1.0 – 2018-06-28 =
 * Added a new option for ‘Privacy Policy Notice Page’ that is for the GDPR compliance and ask for allow consent in the subscription form.
 
