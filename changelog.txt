@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 1.1.1 - 2018-01-08 =
+* Bugfix - Fixed 'confirmation email not sent and order not posted' issue with latest Mailpoet v3.17.1
+
 = 1.0.6 - 2018-01-22 =
 * Fixed the add-on-woocommerce-mailpoet.pot file issue under plugin/language/ folder
 
