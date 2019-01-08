@@ -152,7 +152,14 @@ if(!is_admin()){
 	//Place order actions
 	//Run after the checkout form validation complete
 	function wc_after_checkout_validation_mpwa_subscribe($data, $errors){
-		require_once MPWA_ROOT_PATH . 'includes/class-mpwa-place-order.php';
+
+		// Fixes - Confirmation email sending conflict
+		// with older versions of Mailpoet
+		if( MAILPOET_VERSION > '3.11.3' ){
+			require_once MPWA_ROOT_PATH . 'includes/class-mpwa-place-order.php';
+		}else{
+			require_once MPWA_ROOT_PATH . 'includes/class-mpwa-place-order-deprecated.php';
+		}
 		MPWA_Place_Order::subscribe_user($errors);
 	}
 	add_action('woocommerce_after_checkout_validation', 'wc_after_checkout_validation_mpwa_subscribe', 20, 2);
