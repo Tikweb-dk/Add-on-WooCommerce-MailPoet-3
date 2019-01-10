@@ -164,3 +164,4 @@ if(!is_admin()){
 	}
 	add_action('woocommerce_after_checkout_validation', 'wc_after_checkout_validation_mpwa_subscribe', 20, 2);
 }//End if
+
