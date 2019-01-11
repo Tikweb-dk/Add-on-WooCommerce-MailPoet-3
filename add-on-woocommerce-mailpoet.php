@@ -162,5 +162,8 @@ if(!is_admin()){
 		}
 		MPWA_Place_Order::subscribe_user();
 	}
+
+	//this hook runs after validation so no error check for submission
+	//required in the subscribe_user method.
 	add_action('woocommerce_checkout_update_order_meta', 'wc_after_checkout_validation_mpwa_subscribe', 20);
 }//End if
