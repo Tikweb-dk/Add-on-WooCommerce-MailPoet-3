@@ -19,13 +19,13 @@ if(!class_exists('MPWA_Place_Order')){
 		/**
 		 * Get user information and subscribe
 		 */
-		public static function subscribe_user($data)
+		public static function subscribe_user($errors = '')
 		{
 			//If submited form has no error
-			//if(empty($errors->errors)){
+			if(empty($errors->errors)){
 				
 				//Form Data
-				$posted_data = $data;
+				$posted_data = $_POST;
 
 				//If Multi-Subscription enable
 				if(isset($posted_data['mailpoet_multi_subscription'])){
@@ -47,7 +47,7 @@ if(!class_exists('MPWA_Place_Order')){
 
 				} //End if
 
-			//}//End if
+			}//End if
 			
 		}//End of subscribe_user
 
