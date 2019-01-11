@@ -162,6 +162,7 @@ if(!is_admin()){
 		}
 		MPWA_Place_Order::subscribe_user($errors);
 	}
-	add_action('woocommerce_after_checkout_validation', 'wc_after_checkout_validation_mpwa_subscribe', 20, 2);
+	//try this on order processed hook.
+	add_action('woocommerce_checkout_order_processed', 'wc_after_checkout_validation_mpwa_subscribe', 20, 2);
 }//End if
 
