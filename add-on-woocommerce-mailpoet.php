@@ -151,7 +151,7 @@ if(!is_admin()){
 
 	//Place order actions
 	//Run after the checkout form validation complete
-	function wc_after_checkout_validation_mpwa_subscribe($data, $errors){
+	function wc_after_checkout_validation_mpwa_subscribe($order_id, $data){
 
 		// Fixes - Confirmation email sending conflict
 		// with older versions of Mailpoet
@@ -160,10 +160,21 @@ if(!is_admin()){
 		}else{
 			require_once MPWA_ROOT_PATH . 'includes/class-mpwa-place-order-deprecated.php';
 		}
-		MPWA_Place_Order::subscribe_user($errors);
+		MPWA_Place_Order::subscribe_user($data);
 	}
 	//try this on order processed hook.
 	//previous hook : woocommerce_after_checkout_validation
-	add_action('woocommerce_checkout_order_processed', 'wc_after_checkout_validation_mpwa_subscribe', 20, 2);
+	add_action('woocommerce_checkout_update_order_meta', 'wc_after_checkout_validation_mpwa_subscribe', 20, 2);
 }//End if
+
+
+/**
+ * Test function
+ */
+// function md_test( $order_id, $data ){
+// 	$gdpr_unsubscribe = $data['gdpr_unsubscribe'];
+//     if ( ! empty( $gdpr_unsubscribe ) )
+//         add_post_meta( $order_id, 'gdpr_unsubscribe', sanitize_text_field( $gdpr_unsubscribe ) );
+// }
+// add_action('woocommerce_checkout_update_order_meta', 'md_test', 30, 2);
 
