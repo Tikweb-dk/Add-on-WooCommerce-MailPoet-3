@@ -151,7 +151,7 @@ if(!is_admin()){
 
 	//Place order actions
 	//Run after the checkout form validation complete
-	function wc_after_checkout_validation_mpwa_subscribe($data, $errors = ''){
+	function wc_after_checkout_validation_mpwa_subscribe(){
 
 		// Fixes - Confirmation email sending conflict
 		// with older versions of Mailpoet
@@ -160,7 +160,7 @@ if(!is_admin()){
 		}else{
 			require_once MPWA_ROOT_PATH . 'includes/class-mpwa-place-order-deprecated.php';
 		}
-		MPWA_Place_Order::subscribe_user($errors = '');
+		MPWA_Place_Order::subscribe_user();
 	}
-	add_action('woocommerce_checkout_update_order_meta', 'wc_after_checkout_validation_mpwa_subscribe', 20, 2);
+	add_action('woocommerce_checkout_update_order_meta', 'wc_after_checkout_validation_mpwa_subscribe', 20);
 }//End if

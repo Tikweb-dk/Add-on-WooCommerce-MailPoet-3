@@ -20,8 +20,7 @@ if(!class_exists('MPWA_Place_Order')){
 		 */
 		public static function subscribe_user($errors = '')
 		{
-			//If submited form has no error
-			if(empty($errors->errors)){
+			
 				
 				//Form Data
 				$posted_data = $_POST;
@@ -46,7 +45,7 @@ if(!class_exists('MPWA_Place_Order')){
 
 				} //End if
 
-			}//End if
+			
 			
 		}//End of subscribe_user
 
