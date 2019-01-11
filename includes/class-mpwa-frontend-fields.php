@@ -192,5 +192,15 @@ if(!class_exists('MPWA_Frontend_Fields')){
 			$MPWA_Frontend_Fields = MPWA_Frontend_Fields::init();
 		}
 	}
-	add_action('posts_selection', 'mpwa_frontend_fields_init_posts_selection');
+
+	// We need to use different hooks for this, if the position is
+	// before or after submit button
+	// review_order_before_submit
+	$subscription_field_position = get_option('wc_mailpoet_subscription_position');
+	if ( $subscription_field_position == 'review_order_before_submit' || $subscription_field_position == 'review_order_after_submit' )
+	{
+		add_action('woocommerce_checkout_update_order_review', 'mpwa_frontend_fields_init_posts_selection');
+	}else{
+		add_action('posts_selection', 'mpwa_frontend_fields_init_posts_selection');
+	}
 }//End if

@@ -119,21 +119,9 @@ That's it, now when your customers tick the subscribe checkbox on the checkout p
 
 == Changelog ==
 
-= 1.1.1 - 2018-01-08 =
-* Bugfix - Fixed 'confirmation email not sent and order not posted' issue with latest Mailpoet v3.17.1
-
-= 1.1.0 – 2018-06-28 =
-* Added a new option for ‘Privacy Policy Notice Page’ that is for the GDPR compliance and ask for allow consent in the subscription form.
-
-* Added a new settings for the 'GDPR'.
-
-* Settings for the display GDPR Subscription consent Text.
-
-* Set Privacy Page
-
-* Display Subscribe/Unsubscribe options
-
-* Added changelog.txt file
+= 1.1.2 - 2018-01-11 =
+* Bugfix - Fixed subscription confirmation and status change not happening with previous bugfix.
+* Bugfix - Fixed issue of "subscription fields not showing" when the form position is before or after order submit.
 
 [Changelog](https://plugins.svn.wordpress.org/add-on-woocommerce-mailpoet/trunk/changelog.txt)
 
