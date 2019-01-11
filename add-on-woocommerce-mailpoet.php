@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Add-on WooCommerce MailPoet 3
  * Description:       Let your customers subscribe to your newsletter as they checkout with their purchase.
- * Version:           1.1.1
+ * Version:           1.1.2
  * Author:            Tikweb
  * Author URI:        http://www.tikweb.dk/
  * License:           GPL-2.0+
