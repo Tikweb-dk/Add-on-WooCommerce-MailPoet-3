@@ -18,35 +18,30 @@ if(!class_exists('MPWA_Place_Order')){
 		/**
 		 * Get user information and subscribe
 		 */
-		public static function subscribe_user($errors = '')
-		{
-			//If submited form has no error
-			if(empty($errors->errors)){
+		public static function subscribe_user()
+		{			
+			//Form Data
+			$posted_data = $_POST;
+
+			//If Multi-Subscription enable
+			if(isset($posted_data['mailpoet_multi_subscription'])){
+
+				$list_id_array = $posted_data['mailpoet_multi_subscription'];
+				self::save_subscriber_record($list_id_array, $posted_data);
+
+			}elseif(isset($posted_data['mailpoet_checkout_subscribe']) && !empty($posted_data['mailpoet_checkout_subscribe'])){
 				
-				//Form Data
-				$posted_data = $_POST;
-
-				//If Multi-Subscription enable
-				if(isset($posted_data['mailpoet_multi_subscription'])){
-
-					$list_id_array = $posted_data['mailpoet_multi_subscription'];
-					self::save_subscriber_record($list_id_array, $posted_data);
-
-				}elseif(isset($posted_data['mailpoet_checkout_subscribe']) && !empty($posted_data['mailpoet_checkout_subscribe'])){
-					
-					$list_id_array = get_option('wc_mailpoet_segment_list');	
-					self::save_subscriber_record($list_id_array, $posted_data);
-
-				}//End if
-
-				// If unsubscribe requested.
-				if ( isset($posted_data['gdpr_unsubscribe']) && $posted_data['gdpr_unsubscribe'] == 'on' ){
-
-					self::unsubscribe_user( $posted_data );
-
-				} //End if
+				$list_id_array = get_option('wc_mailpoet_segment_list');	
+				self::save_subscriber_record($list_id_array, $posted_data);
 
 			}//End if
+
+			// If unsubscribe requested.
+			if ( isset($posted_data['gdpr_unsubscribe']) && $posted_data['gdpr_unsubscribe'] == 'on' ){
+
+				self::unsubscribe_user( $posted_data );
+
+			} //End if
 			
 		}//End of subscribe_user
 
