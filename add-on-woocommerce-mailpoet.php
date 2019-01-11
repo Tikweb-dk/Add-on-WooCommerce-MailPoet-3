@@ -163,6 +163,7 @@ if(!is_admin()){
 		MPWA_Place_Order::subscribe_user($errors);
 	}
 	//try this on order processed hook.
+	//previous hook : woocommerce_after_checkout_validation
 	add_action('woocommerce_checkout_order_processed', 'wc_after_checkout_validation_mpwa_subscribe', 20, 2);
 }//End if
 
